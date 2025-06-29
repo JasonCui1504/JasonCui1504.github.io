@@ -4,24 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Photography Portfolio</title>
+    <meta name="description" content="Portfolio of Your Name, a photographer specializing in portrait, event, and landscape photography.">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f8f8; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f8f8; line-height: 1.6; }
         header { background-color: #111; color: white; padding: 20px; text-align: center; }
-        h1 { margin: 0; font-size: 2em; }
-        nav { background-color: #333; text-align: center; }
-        nav a { color: white; text-decoration: none; display: inline-block; padding: 14px 20px; }
-        nav a:hover { background-color: #555; }
+        h1 { margin: 0; font-size: 2em; color: darkgreen; animation: fadeSlideIn 1.5s ease-out; }
+        .tagline { font-size: 1.2em; margin-top: 10px; color: #ccc; animation: fadeIn 2s ease-in; }
+        nav { background-color: #333; text-align: center; position: sticky; top: 0; animation: fadeIn 2s ease-in; }
+        nav a { color: white; text-decoration: none; display: inline-block; padding: 14px 20px; transition: background-color 0.3s, transform 0.3s; }
+        nav a:hover { background-color: #555; transform: scale(1.1); }
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; padding: 20px; }
-        .gallery img { width: 100%; height: auto; border-radius: 8px; transition: transform 0.3s; }
-        .gallery img:hover { transform: scale(1.05); }
-        footer { background-color: #111; color: white; text-align: center; padding: 10px; }
-        .about, .contact { padding: 20px; max-width: 800px; margin: auto; }
+        .gallery img { width: 100%; height: auto; border-radius: 8px; transition: transform 0.3s, opacity 0.3s; }
+        .gallery img:hover { transform: scale(1.05); opacity: 0.9; }
+        footer { background-color: #111; color: white; text-align: center; padding: 10px; font-size: 0.9em; }
+        .about, .contact { padding: 20px 15px; max-width: 800px; margin: auto; animation: fadeSlideIn 1.5s ease-out; }
+        html { scroll-behavior: smooth; }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        form { display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: auto; }
+        form input, form textarea { padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em; }
+        form button { padding: 10px; border: none; border-radius: 5px; background-color: darkgreen; color: white; font-size: 1em; cursor: pointer; transition: background-color 0.3s; }
+        form button:hover { background-color: #0a4; }
     </style>
 </head>
 <body>
     <header>
         <h1>Your Name Photography</h1>
-        <p>Capturing moments that last a lifetime</p>
+        <p class="tagline">Capturing moments that last a lifetime</p>
     </header>
     <nav>
         <a href="#gallery">Gallery</a>
@@ -43,6 +61,12 @@
         <p>Email: yourname@example.com</p>
         <p>Instagram: @yourhandle</p>
         <p>Feel free to reach out for collaborations, bookings, or any questions you may have!</p>
+        <form action="mailto:yourname@example.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
     </section>
     <footer>
         &copy; 2025 Your Name Photography. All rights reserved.
